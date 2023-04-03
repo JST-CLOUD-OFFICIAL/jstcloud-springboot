@@ -22,7 +22,7 @@ public class CounterServiceImpl implements CounterService {
 
     @Override
     public Counter get() {
-        Counter counter = counterMapper.select();
+        Counter counter = counterMapper.selectFirst();
         if(counter == null){
             counter = new Counter();
             counter.setCount(0);
@@ -36,7 +36,7 @@ public class CounterServiceImpl implements CounterService {
 
     @Override
     public Counter increment() {
-        Counter counter = counterMapper.select();
+        Counter counter = counterMapper.selectFirst();
         if(counter == null){
             counter = new Counter();
             counter.setCount(1);
@@ -53,7 +53,7 @@ public class CounterServiceImpl implements CounterService {
 
     @Override
     public Counter decrement() {
-        Counter counter = counterMapper.select();
+        Counter counter = counterMapper.selectFirst();
         if(counter == null){
             counter = new Counter();
             counter.setCount(1);

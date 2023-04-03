@@ -5,38 +5,38 @@
     <resultMap id="counterMapper" type="com.alibaba.jstcloud.dto.Counter">
         <id property="id" column="id" javaType="java.lang.Long"/>
         <result property="count" column="count" javaType="java.lang.Integer"/>
-        <result property="gmtCreated" column="gmt_created" javaType="java.time.LocalDateTime" />
-        <result property="gmtModified" column="gmt_modified" javaType="java.time.LocalDateTime"  />
+        <result property="gmtCreated" column="gmt_created" javaType="java.util.Date" />
+        <result property="gmtModified" column="gmt_modified" javaType="java.util.Date"  />
     </resultMap>
 
     <select id="selectById" resultMap="counterMapper" parameterType="java.lang.Long">
         SELECT `id`, `count`, `gmt_created`, `gmt_modified`
-        FROM jst_demo_counter
+        FROM counter
         WHERE id = #{id}
     </select>
 
-    <select id="select" resultMap="counterMapper">
+    <select id="selectFirst" resultMap="counterMapper">
         SELECT `id`, `count`, `gmt_created`, `gmt_modified`
-        FROM jst_demo_counter
-        LIMIT 1
+        FROM counter
         ORDER BY gmt_created DESC
+        LIMIT 1
     </select>
 
     <insert id="insert" parameterType="com.alibaba.jstcloud.dto.Counter">
-        INSERT INTO jst_demo_counter
+        INSERT INTO counter
             (`id`, `count`)
         VALUE(#{id}, #{count})
     </insert>
 
     <delete id="deleteById" parameterType="java.lang.Integer">
         DELETE
-        FROM jst_demo_counter
+        FROM counter
         WHERE id = #{id}
             limit 1
     </delete>
 
     <update id="update" parameterType="com.alibaba.jstcloud.dto.Counter">
-        UPDATE `jst_demo_counter`
+        UPDATE `counter`
         SET count = #{count}
         WHERE id = #{id}
     </update>

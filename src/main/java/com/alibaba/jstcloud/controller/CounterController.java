@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
-@Controller
+@RestController
 @RequestMapping("/counter")
 public class CounterController {
     private final static Logger logger = LoggerFactory.getLogger(CounterController.class);
@@ -45,10 +45,15 @@ public class CounterController {
     }
 
 
-    @RequestMapping(value = "" ,method = RequestMethod.GET)
-    public String index() {
-        System.out.println("aaa");
-        return "redirect:/index.html";
+    @RequestMapping(value = "/" ,method = RequestMethod.GET)
+    public Response<Counter> index() {
+        try {
+            Counter counter = counterService.get();
+            return Response.success(counter);
+        }catch (Exception e){
+            logger.error("counter decrement error: ", e);
+            return Response.fail(400, "系统错误");
+        }
     }
 
 }

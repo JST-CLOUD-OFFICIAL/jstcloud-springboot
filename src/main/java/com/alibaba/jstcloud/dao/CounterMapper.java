@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface CounterMapper {
 
-    Counter select();
+    Counter selectFirst();
 
     Counter selectById(@Param("id") Integer id);
 
