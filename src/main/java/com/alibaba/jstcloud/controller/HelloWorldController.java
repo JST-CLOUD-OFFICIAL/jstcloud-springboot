@@ -11,9 +11,9 @@ import javax.annotation.Resource;
 @RequestMapping("/")
 public class HelloWorldController {
 
-    @GetMapping("/")
+    @GetMapping("")
     public Response<String> hello(){
-        return Response.success("Welcome to jst appengine, hello world!");
+        return Response.success("Welcome to Jst AppEngine, Hello World!");
     }
 
 }
