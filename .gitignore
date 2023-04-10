@@ -38,4 +38,8 @@ build/
 ### log file ###
 *.log
 
+# test and output file
 test.sh
+*demo.jar
+*demo.war
+*demo.zip
