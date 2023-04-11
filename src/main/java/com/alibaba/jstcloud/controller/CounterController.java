@@ -21,7 +21,6 @@ public class CounterController {
     @Resource
     private CounterService counterService;
 
-
     @RequestMapping(value = "/increment", method = RequestMethod.GET)
     public Response<Counter> increment(){
         try {
